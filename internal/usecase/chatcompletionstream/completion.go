@@ -13,7 +13,7 @@ import (
 
 type ChatCompletionConfigInputDTO struct {
 	Model                string
-	ModelMaxTokenx       int
+	ModelMaxTokens       int
 	Temperature          float32
 	TopP                 float32
 	N                    int
@@ -95,7 +95,7 @@ func (uc *ChatCompletionUseCase) Execute(ctx context.Context, input ChatCompleti
 			Temperature:      chat.Config.Temperature,
 			TopP:             chat.Config.TopP,
 			PresencePenalty:  chat.Config.PresencePenalty,
-			FrequencyPenalty: chat.Config.FrequencePenalty,
+			FrequencyPenalty: chat.Config.FrequencyPenalty,
 			Stop:             chat.Config.Stop,
 			Stream:           true,
 		},
@@ -142,7 +142,7 @@ func (uc *ChatCompletionUseCase) Execute(ctx context.Context, input ChatCompleti
 }
 
 func createNewChat(input ChatCompletionInputDTO) (*entity.Chat, error) {
-	model := entity.NewModel(input.Config.Model, input.Config.ModelMaxTokenx)
+	model := entity.NewModel(input.Config.Model, input.Config.ModelMaxTokens)
 	chatConfig := &entity.ChatConfig{
 		Temperature:      input.Config.Temperature,
 		TopP:             input.Config.TopP,
@@ -150,7 +150,7 @@ func createNewChat(input ChatCompletionInputDTO) (*entity.Chat, error) {
 		Stop:             input.Config.Stop,
 		MaxTokens:        input.Config.MaxTokens,
 		PresencePenalty:  input.Config.PresencePenalty,
-		FrequencePenalty: input.Config.FrequencePenalty,
+		FrequencyPenalty: input.Config.FrequencePenalty,
 		Model:            model,
 	}
 	initialMessage, err := entity.NewMessage("system", input.Config.InitialSystemMessage, model)

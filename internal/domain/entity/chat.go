@@ -14,7 +14,7 @@ type ChatConfig struct {
 	Stop             []string
 	MaxTokens        int
 	PresencePenalty  float32
-	FrequencePenalty float32
+	FrequencyPenalty float32
 }
 
 type Chat struct {

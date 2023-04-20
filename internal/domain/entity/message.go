@@ -18,7 +18,7 @@ type Message struct {
 }
 
 func NewMessage(role, content string, model *Model) (*Message, error) {
-	totalTokens := tiktoken_go.CountToken(model.GetModelName(), content)
+	totalTokens := tiktoken_go.CountTokens(model.GetModelName(), content)
 	msg := &Message{
 		ID:        uuid.New().String(),
 		Role:      role,
