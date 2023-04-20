@@ -52,7 +52,7 @@ func NewChatCompletionUseCase(chatGateway gateway.ChatGateway, openAiClient *ope
 }
 
 func (uc *ChatCompletionUseCase) Execute(ctx context.Context, input ChatCompletionInputDTO) (*ChatCompletionOutputDTO, error) {
-	chat, err := uc.ChatGateway.FindChatById(ctx, input.ChatID)
+	chat, err := uc.ChatGateway.FindChatByID(ctx, input.ChatID)
 	if err != nil {
 		if err.Error() == "chat not found" {
 			//create new chat
