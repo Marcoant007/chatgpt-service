@@ -15,11 +15,6 @@ type ChatRepositoryMySQL struct {
 	Queries *db.Queries
 }
 
-// FindChatById implements gateway.ChatGateway
-func (*ChatRepositoryMySQL) FindChatById(ctx context.Context, chatID string) (*entity.Chat, error) {
-	panic("unimplemented")
-}
-
 func NewChatRepositoryMySQL(dbt *sql.DB) *ChatRepositoryMySQL {
 	return &ChatRepositoryMySQL{
 		DB:      dbt,

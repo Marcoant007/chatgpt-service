@@ -10,6 +10,7 @@ import (
 	"github.com/marcoant007/chatgptservice/internal/infra/web/webserver"
 	"github.com/marcoant007/chatgptservice/internal/usecase/chatcompletion"
 	"github.com/sashabaranov/go-openai"
+	_ "github.com/go-sql-driver/mysql"
 )
 
 func main() {
@@ -21,7 +22,7 @@ func main() {
 	conn, err := sql.Open(configs.DBDriver, fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true&multiStatements=true",
 		configs.DBUser, configs.DBPassword, configs.DBHost, configs.DBPort, configs.DBName))
 	if err != nil {
-		panic(err)
+		fmt.Printf("%v", err)
 	}
 	defer conn.Close()
 
